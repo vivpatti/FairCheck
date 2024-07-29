@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+
+{% block content %}
+    <div style="margin-left:0px; margin-right:0px">
+        <p class="text-justify; font-weight-light" >
+            The <b>unfair expression</b>, if detected, is shown in the selected text. Check the info to know more.
+        </p>
+    </div>
+
+    <table class="table">
+        <tbody>
+        <tr>
+            <td scope="row">
+                <div class="container-fluid; border border-secondary" style="width:auto; margin-bottom:5px; margin-left: ($spacer * .25); margin-right: ($spacer * .25)">
+
+                    {% if text_processed %}
+                        <div class="p-3" style="display: flex; width:auto; height:auto;">
+                            <p class="text-justify; font-weight">
+                            {{ text_processed | safe}}
+                            </p>
+                        </div>
+                    {% else %}
+                        <div class="p-3" style="display: flex; width:auto; height:auto;">
+                            <p class="text-justify; font-weight">
+                            {{ text['text2check'] }}
+                            </p>
+                        </div>
+                    {% endif %}
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-secondary btn-sm" onclick="toggle_display()" style="margin-left:10px">Info</button>
+                <div class="content_section" style="visibility: hidden; margin-top:10px; display:flex">
+                    <p class="font-weight-light; alert alert-info" style="margin-left:10px">
+                        {{ info | safe}}
+                    </p>
+                </div>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr>
+    {% if text_processed %}
+        <form action="{{ url_for('get_alternative', id=text['id']) }}" method="POST">
+            <div>
+                <p class="font-weight-light">
+                    Choose the alternative you prefer:
+                </p>
+            </div>
+            <div class="font-weight">
+                <input type="radio" id="x1" name="x" value="text1" required>{{ text['alternative1'] }}
+            </div>
+            <div class="font-weight">
+                <input type="radio" id="x2" name="x" value="text2" required>{{ text['alternative2'] }}
+            </div>
+            <div class="font-weight">
+                <input type="radio" id="x3" name="x" value="text3" required>{{ text['alternative3'] }}
+            </div>
+            <div class="font-weight">
+                <input type="radio" id="x4" name="x" value="text4" required>{{ text['alternative4'] }}
+            </div>
+            <div class="font-weight-light" style="margin-top:15px; margin-bottom:15px">
+                <input type="submit" value="Rewrite" class="btn btn-secondary btn-sm">
+            </div>
+
+            {% if x %}
+
+            <div class="border border-secondary" style="width:auto; height:auto; margin:auto; display:flex;">
+                <div class="p-3" >
+                    <p class="text-justify; font-weight"> {{x}} </p>
+                </div>
+            </div>
+            {% endif %}
+        </form>
+
+        <hr>
+            <div style="margin-top:20px">
+                    <p class="font-weight-light"> Do you prefer to use a different alternative?</p>
+            </div>
+
+        <div class="font-weight-light" style="margin-top:20px; margin-bottom:100px">
+            <a href="{{ url_for('get_rewrite', id=text['id']) }}" class="button; btn btn-secondary btn-sm">Add</a>
+        </div>
+
+    {% else %}
+        <div style="margin-bottom:100px; margin-top:10px">
+            <a href="{{ url_for('demo') }}" class="button; btn btn-secondary btn-sm">Back</a>
+        </div>
+    {% endif %}
+{% endblock %}

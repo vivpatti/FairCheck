@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <div class="container-fluid">
+        <h1 class="mx-auto" style="width: 200px">FairCheck</h1>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid" style="margin-left: ($spacer * .25); margin-right: ($spacer * .25);margin-bottom:100px">
+        <p class="text-justify; font-weight-light" >
+            Do you wish to write sexism-free, but struggle? Does your organization require you to follow gender-fair guidelines, but you find it difficult?
+            <span style="color: #7D00FE;">FairCheck</span> can help!
+            It automatically detects gender-unfair expressions and offers you four alternatives of different types, while also leaving you the opportunity to add your own solution.
+            Try it out in the <a href="{{ url_for('demo') }}">Demo</a> page!
+        </p>
+        <h3 class="mx-auto">Why gender-fair language?</h3>
+        <p class="text-justify; font-weight-light" >
+            <a href=" https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.00025/full">Extensive experimental literature</a> shows how certain gendered expressions influence our cognition, with masculine terms evoking male images and reducing the chance that women apply to and are considered a good fit for a job position. These are among the reasons that push several individuals and organizations to counter asymmetric uses of the masculine, which make women and non-binary people invisible. In Italian, for instance, certain job titles are used in the masculine even when referring to women professionals and mixed-gender groups are referred to with the masculine, even when there’s just a few (or even one) men.
+        </p>
+        <p class="text-justify; font-weight-light" >
+            Crucially, though, gender is pervasive in the Italian language: not only pronouns are gendered, but also are nouns, adjectives, and some past participles. Thus, using gender-fair language in Italian requires to monitor an extensive amount of words. This makes it really difficult to avoid the aforementioned asymmetric uses of the masculine, even when one is motivated to or has received specific training.
+        </p>
+        <p class="text-justify; font-weight-light" >
+            To mitigate this difficulty, we developed FairCheck: a spell-check-like software that detects gender-unfair language and suggests alternative, gender-fair wording. FairCheck suggests alternative of four different types: the repetition of masculine terms also in the feminine (conservative visibility) or in innovative forms such as the asterisk or the schwa (innovative visibility), the use of innovative forms  or periphrases to avoid expressing gender (innovative and conservative obscuration, respectively). The tool further allows you to type a different alternative.
+        </p>
+        <p class="text-justify; font-weight-light" >
+            To enable users to understand the problem with the detected expressions and allow them to learn, FairCheck provides an explanation for why the detected expression is unfair.
+        </p>
+        <a href="{{ url_for('demo') }}" class="button; btn btn-secondary btn-sm">Try our Demo</a>
+    </div>
+
+{% endblock %}

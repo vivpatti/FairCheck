@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+    <hr>
+    <p class="font-weight-light">Text: </p>
+    <p style="margin-left:10px"> "{{ text['text2check'] }}" </p>
+    <p class="font-weight-light">Unfair expression:</p>
+    <p style="margin-left:10px">"{{ text['span'] }}"</p>
+    <hr>
+
+    <form method="post">
+        <label for="manual_rewrite" class="font-weight-light">Add your own alternative: </label>
+        <div>
+            <textarea style="width:500px; height:100px; margin:auto" name="manual_rewrite" id="manual_rewrite" required>{{ request.form['manual_rewrite'] or  text['text2check'] }}</textarea>
+        </div>
+        <div style="margin-bottom:100px; margin-top:10px">
+            <input type="submit" value="Rewrite" class="btn btn-secondary btn-sm">
+            <a href="{{ url_for('get_check', id=text['id']) }}" class="button; btn btn-secondary btn-sm">Back</a>
+        </div>
+    </form>
+
+
+{% endblock %}
