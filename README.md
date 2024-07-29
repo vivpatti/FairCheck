@@ -13,9 +13,9 @@ For any information contact us to fair-check@outlook.com
 # Main contributors
 Martina Rosola - Universitat de Barcelona
 
-Simona Frenda - aequa-tech
+Simona Frenda - [aequa-tech](https://aequa-tech.com/)
 
-Viviana Patti - Università degli studi di Torino
+Viviana Patti - [Università degli studi di Torino](https://www.unito.it/persone/vpatti)
 
 # Publications
 >@inproceedings{rosola2023beyond,
